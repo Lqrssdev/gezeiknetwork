@@ -3,7 +3,7 @@ const client = new Discord.Client({partials: ["MESSAGE", "USER", "REACTION"]});
 const enmap = require('enmap');
 const {token, prefix} = require('./config.json')
 
-client.login('NzgxNTczODE5MjAyNjY2NTQ2.X7_nVw.o7OkT4BW35C6rxQDiNaKMUhhu2w');
+client.login("Nzg0MDgwMDI0MTM4Njc4MzI0.X8kFbQ.7TzU8Tdm99RruB7aSIIqio_Ttds");
 
 const settings = new enmap({
     name: "settings",
@@ -13,10 +13,10 @@ const settings = new enmap({
 });
 
 const StatusList = [
-    `Ticket-Star | !help`, 
-    `Checking Tickets 🎫 | Ticket-Star✔`,
-    `Ad | https://discord.gg/DeJDKGy6`,
-    `In 10+ Servers`
+    `Vrijdag Opening!! 19:00 `, 
+    `Checking Tickets 🎫 | GezeikNetwork✔`,
+    `Gezeik| https://discord.gg/aVHue988`,
+    `GezeikNetwork Loading... `
     ];
 
 client.on('ready', async () => {
@@ -41,9 +41,9 @@ client.on('message', async message => {
         if(!channel) return message.reply("Usage: `!ticket-setup #channel`");
 
         let sent = await channel.send(new Discord.MessageEmbed()
-            .setTitle("React to open a ticket!")
-            .setDescription("👥 | Partners \n ❓ | Questions \n 🛒 | Shopping \n 📰 | Applications \n 🎫 | Other")
-            .setFooter("Ticket System")
+            .setTitle("Klik op een Emoji om een Ticket te Openen!")
+            .setDescription("👥 | Partners \n ❓ | Vragen \n 🛒 | Shopping \n 📰 | Sollicitatie's \n 🎫 | Andere")
+            .setFooter("GezeikNetwork")
             .setColor("00ff00")
 
         );
@@ -55,7 +55,7 @@ client.on('message', async message => {
 
             settings.set(`${message.guild.id}-ticket`, sent.id);
         
-            message.channel.send("Ticket Setup Done ✅ \n```Ticket-Star``` ");
+            message.channel.send("Ticket Setup Done ✅ \n```GezeikNetwork``` ");
 
     }
 
@@ -140,7 +140,7 @@ client.on('message', async message => {
             else if (reaction.message.id == ticketid && reaction.emoji.name == '📰') {
                 reaction.users.remove(user);
 
-                reaction.message.guild.channels.create(`ticket-appli-${user.username}`, {
+                reaction.message.guild.channels.create(`ticket-solli-${user.username}`, {
                     permissionOverwrites: [
                         {
                             id: user.id,
@@ -159,7 +159,7 @@ client.on('message', async message => {
             else if (reaction.message.id == ticketid && reaction.emoji.name == '🎫') {
                 reaction.users.remove(user);
 
-                reaction.message.guild.channels.create(`ticket-other-${user.username}`, {
+                reaction.message.guild.channels.create(`ticket-andere-${user.username}`, {
                     permissionOverwrites: [
                         {
                             id: user.id,
